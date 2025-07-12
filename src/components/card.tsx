@@ -1,25 +1,54 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
-export default function Card({ url }: { url: string }) {
+export default function Card({ url, setPaintingClicked, final }: { url: string, setPaintingClicked: (state: boolean) => void, final: boolean }) {
   const [clicked, setClicked] = useState<boolean>(false);
+  const [offsetY, setOffsetY] = useState<number>(0)
+  const cardContainer = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    if (clicked) {
+      setClicked(false);
+      setPaintingClicked(false)
+      document.body.style.overflow = "visible"
+    }
+    else if (cardContainer.current) {
+      const rect = cardContainer.current.getBoundingClientRect();
+      setOffsetY(rect.top);
+      setClicked(true);
+      setPaintingClicked(true)
+      document.body.style.overflow = "hidden"
+    }
+  };
+
   return (
     <>
     <div 
-    id={clicked ? "card-parent-transitions" : ""}
-    className={`w-full perspective-normal inset-0 h-20 relative p-0
-    `}>
+      ref={cardContainer}
+      className={`w-full perspective-normal inset-0 relative p-0 duration-300 ease-out transition-transform z-index-transformation
+        ${clicked ? 'pt-5' : ''}
+        ${clicked ? 'onTop' : 'notOnTop'}
+        ${final ? 'h-full' : 'h-20'}
+      `}
+      style={{
+          transform: clicked ? `translateY(-${offsetY}px)` : "translateY(0px)",
+      }}
+    >
         <Image
-          onClick={() => setClicked(!clicked)}
-          id={clicked ? "card-transitions" : ""}
+          onClick={() => handleClick()}
           src={url}
           alt="test"
           width={500}
           height={400}
-          className={`rounded-xl w-full h-auto cursor-pointer origin-top -rotate-x-50`}
+          className={`rounded-xl w-full h-auto cursor-pointer origin-top duration-300 ease-out transition-transform
+            `}
+
+          style={{
+            transform: clicked ? `rotateX(0deg)` : "rotateX(-50deg)",
+          }}
         />
         { clicked ? 
-          <div className="flex justify-between p-1">
+          <div className="h-20 flex justify-between p-1 bg-white rounded-md mt-2">
             <h1 >
               Painting
             </h1>
@@ -35,7 +64,7 @@ export default function Card({ url }: { url: string }) {
           </div>
           :
           null
-       }      
+       }
     </div>
     </>
   );

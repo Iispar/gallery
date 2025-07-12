@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #F5F5DC;
   --foreground: #171717;
 }
 
-body {
+body, html {
   -webkit-transform: perspective(500px);
   -webkit-transform-style: preserve-3d;
   position: absolute;
@@ -13,6 +13,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  height: max-content
 }
 
 @theme inline {
@@ -33,34 +34,34 @@ h1 {
   font-size: 20px;
 }
 
-
-#card-transitions {
-  animation: moveAndRotate 1s ease-in-out forwards;
+.onTop {
+   animation: moveToTop 0.3s forwards;
+}
+.notOnTop {
+  animation: moveToBottom 0.3s forwards;
 }
 
-#card-parent-transitions {
-  animation: popUp 1s ease-in-out forwards;
-}
 
-@keyframes popUp {
+@keyframes moveToTop {
   0% {
     z-index: 0;
-    position: relative;
-    padding: 0;
+  }
+  25% {
+    z-index: 0;
   }
   100% {
     z-index: 2;
   }
 }
 
-@keyframes moveAndRotate {
+@keyframes moveToBottom {
   0% {
-    transform: translateY(0px) rotateX(-50deg) translateZ(0px);
+    z-index: 2;
   }
-  25% {
-    transform: translateY(-270px) translateZ(10px)
+  50% {
+    z-index: 2;
   }
   100% {
-    transform: translateY(0px) rotateX(0deg) ;
+    z-index: 0;
   }
 }
