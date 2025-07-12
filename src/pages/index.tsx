@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-end p-2">
-        <Image alt="burger" className="z-2" src={"/burger.png"} width={40} height={40}/>
+        <Image alt="burger" className="z-2" src={"/burger.PNG"} width={40} height={40}/>
       </div>
       <div className="flex flex-col justify-start align-start gap-3 p-5">
         {images.map((url, index) => (
