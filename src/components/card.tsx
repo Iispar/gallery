@@ -1,18 +1,24 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-export default function Card({ url, setPaintingClicked, final }: { url: string, setPaintingClicked: (state: boolean) => void, final: boolean }) {
+export default function Card({ url, setPaintingClicked, final, closeImage, dropdown }: { url: string, setPaintingClicked: (state: boolean) => void, final: boolean, closeImage: boolean, dropdown: boolean }) {
   const [clicked, setClicked] = useState<boolean>(false);
   const [offsetY, setOffsetY] = useState<number>(0)
   const cardContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (clicked) {
+      handleClick()
+    }
+  }, [closeImage])
 
   const handleClick = () => {
     if (clicked) {
       setClicked(false);
       setPaintingClicked(false)
-      document.body.style.overflow = "visible"
+      
     }
-    else if (cardContainer.current) {
+    else if (cardContainer.current && !dropdown) {
       const rect = cardContainer.current.getBoundingClientRect();
       setOffsetY(rect.top);
       setClicked(true);
@@ -37,7 +43,7 @@ export default function Card({ url, setPaintingClicked, final }: { url: string, 
         <Image
           onClick={() => handleClick()}
           src={url}
-          alt="test"
+          alt="image"
           width={500}
           height={400}
           className={`rounded-xl w-full h-auto cursor-pointer origin-top duration-300 ease-out transition-transform
@@ -48,9 +54,9 @@ export default function Card({ url, setPaintingClicked, final }: { url: string, 
           }}
         />
         { clicked ? 
-          <div className="h-20 flex justify-between p-1 bg-white rounded-md mt-2">
+          <div className="h-16 flex rounded-xs justify-between align-end p-1 bg-white/0">
             <h1 >
-              Painting
+              PAINTING
             </h1>
             <div className="flex flex-col items-end">
               <p>
