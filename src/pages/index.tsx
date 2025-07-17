@@ -8,7 +8,7 @@ export default function Home() {
   const [paintingClicked, setPaintingClicked] = useState<boolean>(false)
   const [drowpDown, setdropDown] = useState<boolean>(false)
   const [closeImage, setCloseImage] = useState<boolean>(false)
-  const images = ["/palm.jpg", "/jungle2.jpg", "/three.jpg", "/blue.jpg", "/red.jpeg"];
+  const images = ["/palm.jpg", "/jungle2.jpg", "/plants.jpg", "/three.jpg", "/blue.jpg", "/red.jpeg", "/duck.jpg"];
 
   
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
