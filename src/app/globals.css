@@ -17,7 +17,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-body {
+body, html {
   -webkit-transform: perspective(500px);
   -webkit-transform-style: preserve-3d;
   position: absolute;
@@ -25,10 +25,14 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  height: max-content;
+  height: 100%;
   font-family: sans-serif;
   background: var(--background);
   color: var(--foreground);
+}
+
+#__next {
+  height: 100%;
 }
 
 h1 {

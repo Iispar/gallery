@@ -16,7 +16,7 @@ export default function Card({ url, setPaintingClicked, final, closeImage, dropd
     if (clicked) {
       setClicked(false);
       setPaintingClicked(false)
-      
+      document.body.style.overflow = "auto"
     }
     else if (cardContainer.current && !dropdown) {
       const rect = cardContainer.current.getBoundingClientRect();
