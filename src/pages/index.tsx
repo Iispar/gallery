@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex h-full flex-col justify-between">
       <div className="px-10 top-0 static">
       <h1 className="p-0 m-0" style={{fontSize: "100px"}}>
         HI

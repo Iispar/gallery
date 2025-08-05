@@ -21,11 +21,8 @@ body, html {
   -webkit-transform: perspective(500px);
   -webkit-transform-style: preserve-3d;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+  inset: 0;
+  height: 100%; 
   font-family: sans-serif;
   background: var(--background);
   color: var(--foreground);
@@ -33,6 +30,7 @@ body, html {
 
 #__next {
   height: 100%;
+  overflow: hidden;
 }
 
 h1 {

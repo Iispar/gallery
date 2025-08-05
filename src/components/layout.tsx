@@ -9,7 +9,7 @@ export default function Layout({ children }: {children: unknown}) {
     }
     return (
         <>
-            <div className="fixed w-full z-10">
+            <div className="fixed w-full z-1">
                 <Header dropdown={dropdown} handleDropdown={handleDropdown} />
             </div> 
             {children}
