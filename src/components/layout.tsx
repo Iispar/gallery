@@ -2,15 +2,15 @@
 import { useState } from "react";
 import Header from "./header";
 
-export default function Layout({ children }) {
-  const [drowpDown, setdropDown] = useState<boolean>(false)
+export default function Layout({ children }: {children: unknown}) {
+  const [dropdown, setdropdown] = useState<boolean>(false)
     const handleDropdown = () => {
-        setdropDown(!drowpDown)
+        setdropdown(!dropdown)
     }
     return (
         <>
             <div className="fixed w-full z-10">
-                <Header dropDown={drowpDown} handleDropdown={handleDropdown} />
+                <Header dropdown={dropdown} handleDropdown={handleDropdown} />
             </div> 
             {children}
         </>

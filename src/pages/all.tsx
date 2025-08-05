@@ -2,7 +2,7 @@
 import Card from "@/components/card";
 import { useEffect, useState } from "react";
 
-export default function All({ drowpDown, setdropDown }) {
+export default function All({ dropdown, setDropdown }: {dropdown: boolean, setDropdown: (val: boolean) => void}) {
   const [paintingClicked, setPaintingClicked] = useState<boolean>(false)
   const [closeImage, setCloseImage] = useState<boolean>(false)
   const images = ["/palm.jpg", "/jungle2.jpg", "/plants.jpg", "/three.jpg", "/blue.jpg", "/red.jpeg", "/duck.jpg"];
@@ -11,8 +11,8 @@ export default function All({ drowpDown, setdropDown }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClickClosePanelFromOutside = (e: any) => {
     console.log(e.target.id)
-    if (drowpDown && e.target.id !== "burger" && e.target.id !== "dropdown" || e.target.id == null) {
-        setdropDown(false);
+    if (dropdown && e.target.id !== "burger" && e.target.id !== "dropdown" || e.target.id == null) {
+        setDropdown(false);
         e.stopPropagation();
         e.preventDefault()
     }
@@ -33,7 +33,7 @@ export default function All({ drowpDown, setdropDown }) {
     <>
       <div className="pt-20 flex flex-col justify-start align-start gap-3 p-5">
         {images.map((url, index) => (
-          <Card closeImage={closeImage} dropdown={drowpDown} url={url} key={url} setPaintingClicked={setPaintingClicked} final={index + 1 == images.length} />
+          <Card closeImage={closeImage} dropdown={dropdown} url={url} key={url} setPaintingClicked={setPaintingClicked} final={index + 1 == images.length} />
         ))}
         <div
         onClick={() => setCloseImage(true)}
