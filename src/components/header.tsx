@@ -16,7 +16,7 @@ export default function Header({ dropdown, handleDropdown }: {dropdown: boolean,
             </Link>
             <Link href="all">
                 <p>
-                    ART
+                    ALL ART
                 </p>
             </Link>
             <Link href="about">

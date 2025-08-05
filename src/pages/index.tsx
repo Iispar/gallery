@@ -19,28 +19,22 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex h-full flex-col justify-between">
-      <div className="px-10 top-0 static">
-      <h1 className="p-0 m-0" style={{fontSize: "100px"}}>
-        HI
-      </h1>
-      <span className="p-0 m-0 font-thin text-md">
-        Welcome to my website,
-        to view all art made by me navigate there.
-      </span>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <span className="font-thin">
-          my latest art
-        </span>
+    <div className="flex h-full flex-col pt-20 justify-between items-center">
+    
+        <div className="h-60 flex items-center">
+          <span className="font-thin text-lg">
+            latest art
+          </span>
+        </div>
+      
         <Image
             src={images[currentImage]}
             alt="image"
-            width={200}
-            height={400}
-            className={`w-full h-full`}
+            width={1000}
+            height={1000}
+            className={`w-full h-full object-cover`}
         />
-      </div>
+    
     </div>
   )
 }
