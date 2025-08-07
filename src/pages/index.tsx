@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useEffect, useState } from "react";
 export default function Home() {
-  const images = ["/palm.jpg", "/jungle2.jpg", "/plants.jpg"];
+  const images = ["/jungle2.jpg", "/plants.jpg"];
   const [currentImage, setCurrentImage] = useState<number>(0);
 
   useEffect(() => {
@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <div className="flex h-full flex-col pt-20 justify-between items-center">
     
-        <div className="h-60 flex items-center">
-          <span className="font-thin text-lg">
+        <div className="h-30 flex items-center">
+          <span className="font-thin text-xl tracking-widest">
             latest art
           </span>
         </div>
